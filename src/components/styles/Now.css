@@ -1,0 +1,38 @@
+.Now{
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(#662C91, #4C206D);
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-weight: 300;
+}
+.moment{
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 10px auto 0;
+  align-items: baseline;
+}
+
+.day{
+  font-size: 20px;
+  margin: 0 5px;
+}
+
+.month{
+  font-size: 15px;
+  align-items: baseline;
+}
+
+.tasks{
+  font-weight: 300;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  height: 50px;
+  margin-top: 10px;
+  color: gold;
+}

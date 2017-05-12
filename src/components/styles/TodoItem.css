@@ -1,0 +1,30 @@
+.TodoItem{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.flex-item{
+  display: flex;
+  height: 35px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid white;
+  align-items: center;
+  color: white;
+  transition: 0.2s;
+}
+.flex-item:hover{
+  background: red;
+}
+
+.flex-item input{
+  width: 90%;
+  border: 0;
+  height: 30px;
+  border-radius: 15px;
+  padding-left: 15px;
+}
+
+.content{
+  flex: 3;
+  /*padding-left: 20px;*/
+}

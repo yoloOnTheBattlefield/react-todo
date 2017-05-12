@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import FontAwesome from 'react-fontawesome';
+import './styles/TodoItem.css';
 
 export default class TodoItem extends Component {
   constructor(props){
@@ -11,7 +13,7 @@ export default class TodoItem extends Component {
   }
 
   deleteTodo(id){
-    this.props.deleteTodo(id)
+    this.props.deleteTodo(id);
   }
   editTodo(id){
     this.props.editTodo(id);
@@ -31,16 +33,17 @@ export default class TodoItem extends Component {
       return;
     }
     this.props.updateTodo(this.props.todo.id, this.state.updatedTask);
-    this.setState({ updatedTask: '' })
+    this.setState({ updatedTask: '' });
   }
 
 
   editMode(task){
     return(
-      <div>
+      <div className='flex-item'>
         <form
           ref='form'
           onSubmit={this.handleSubmit}
+          className='content'
           >
           <input
             ref='input'
@@ -48,30 +51,43 @@ export default class TodoItem extends Component {
             onChange={this.handleChange}
            />
         </form>
-        <button onClick={this.handleSubmit}>Save</button>
-        <button onClick={(id) => this.editTodo(this.props.todo.id)}>Cancel</button>
+        <div className='buttons' >
+          <button onClick={this.handleSubmit}>
+            <FontAwesome name='life-ring' />
+          </button>
+          <button onClick={(id) => this.editTodo(this.props.todo.id)}>
+            <FontAwesome name='ban' />
+          </button>
+        </div>
       </div>
     )
   }
 
   normalMode(task){
     return(
-      <div>
-        <span onClick={(id) => this.editTodo(this.props.todo.id)}>{task}</span>
+      <div className='flex-item'>
+        <span
+          className='content'
+          onClick={(id) => this.editTodo(this.props.todo.id)}>{task}</span>
         {
           this.props.todo.done ? (
-            <div>
+            <div className='buttons'>
               <button onClick={(id) => this.deleteTodo(this.props.todo.id)}>Delete</button>
             </div>
           ) : (
-            <div>
-              <button onClick={(id) => this.editTodo(this.props.todo.id)}>Edit</button>
-              <button onClick={(id) => this.doneTodo(this.props.todo.id)}>Done</button>
-              <button onClick={(id) => this.deleteTodo(this.props.todo.id)}>Delete</button>
+            <div className='buttons' >
+              <button onClick={(id) => this.editTodo(this.props.todo.id)}>
+                <FontAwesome name='pencil' />
+              </button>
+              <button onClick={(id) => this.doneTodo(this.props.todo.id)}>
+                <FontAwesome name='check' />
+              </button>
+              <button onClick={(id) => this.deleteTodo(this.props.todo.id)}>
+                <FontAwesome name='trash-o' />
+              </button>
             </div>
           )
         }
-
       </div>
     )
   }
@@ -79,8 +95,7 @@ export default class TodoItem extends Component {
   render(){
     const { id, task, editable } = this.props.todo;
     return (
-      <li key={id}>
-
+      <li key={id} className='TodoItem'>
         {
           editable ?  this.editMode(task) : this.normalMode(task)
         }

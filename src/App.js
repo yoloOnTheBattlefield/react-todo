@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import './App.css';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
+import Now from './components/Now';
 
 
 class App extends Component {
   constructor(props){
     super(props);
+
+
     this.state = {
       todos: [
         {
@@ -81,10 +85,14 @@ class App extends Component {
   }
 
   render() {
+
+    const todos = this.state.todos;
+
     return (
       <div className="App">
+        <Now todos={todos}/>
         <TodoList
-          todos={this.state.todos}
+          todos={todos}
           deleteTodo={(id) => this.deleteTodo(id)}
           editTodo={(id) => this.editTodo(id)}
           updateTodo={(id, newTask) => this.updateTodo(id, newTask)}

@@ -47,7 +47,7 @@ class AddTodo extends Component {
 
   render () {
     return(
-      <div>
+      <div className='TodoForm'>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input
             type='text'
