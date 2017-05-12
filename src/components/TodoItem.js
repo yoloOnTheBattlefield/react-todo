@@ -22,7 +22,7 @@ export default class TodoItem extends Component {
 
   handleChange(){
     const data = this.refs.input.value;
-    this.setState({ updatedTask: data });
+    this.setState({ updatedTask: data.trim() });
   }
 
   handleSubmit(e){
